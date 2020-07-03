@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="FabButton" parent="Widget.MaterialComponents.FloatingActionButton">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="backgroundTintMode">src_atop</item>
+        <item name="elevation">5dp</item>
+        <item name="rippleColor">@color/colorWhite</item>
+    </style>
+
+    <style name="TextButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:insetTop">0dp</item>
+        <item name="android:insetBottom">0dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:gravity">center</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="cornerRadius">20dp</item>
+        <item name="backgroundTintMode">src_atop</item>
+        <item name="elevation">5dp</item>
+        <item name="rippleColor">@color/colorWhite</item>
+    </style>
+
+    <style name="PurpleTextButton" parent="TextButton">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="cornerRadius">25dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="rippleColor">@color/colorWhite</item>
+    </style>
+
+    <style name="GreenTextButton" parent="TextButton">
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">16sp</item>
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="rippleColor">@color/colorWhite</item>
+    </style>
+
+    <style name="WhiteTextButton" parent="TextButton">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">16sp</item>
+        <item name="backgroundTint">@color/colorWhite</item>
+        <item name="rippleColor">@color/colorPrimary</item>
+    </style>
+
+    <style name="PurpleFabButton" parent="FabButton">
+        <item name="backgroundTint">@color/colorPrimary</item>
+        <item name="rippleColor">@color/colorWhite</item>
+    </style>
+
+    <style name="WhiteFabButton" parent="FabButton">
+        <item name="backgroundTint">@color/colorWhite</item>
+        <item name="rippleColor">@color/color_on_primary_50</item>
+    </style>
+
+    <style name="GreenFabButton" parent="FabButton">
+        <item name="backgroundTint">@color/colorAccent</item>
+        <item name="rippleColor">@color/colorWhite</item>
+        <item name="fabCustomSize">60dp</item>
+        <item name="maxImageSize">30dp</item>
+        <item name="tint">@color/colorWhite</item>
+    </style>
+    
+</resources>
