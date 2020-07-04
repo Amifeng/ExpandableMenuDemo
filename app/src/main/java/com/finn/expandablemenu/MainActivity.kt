@@ -1,16 +1,18 @@
 package com.finn.expandablemenu
 
 import android.animation.Animator
+import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.graphics.PointF
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
 import android.view.animation.BounceInterpolator
+import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -63,24 +65,17 @@ class MainActivity : AppCompatActivity() {
             val set = AnimatorSet()
             with(set) {
                 playTogether(
-                    ObjectAnimator.ofFloat(menuViews[i], "translationX", 0F, childMenuPoints[i].x),
-                    ObjectAnimator.ofFloat(menuViews[i], "translationY", 0F, childMenuPoints[i].y),
+                    ObjectAnimator.ofFloat(menuViews[i], "translationX", 0F, childMenuPoints[i].x).setDuration(ANIMATION_TRANSLATION),
+                    ObjectAnimator.ofFloat(menuViews[i], "translationY", 0F, childMenuPoints[i].y).setDuration(ANIMATION_TRANSLATION),
                     ObjectAnimator.ofFloat(menuViews[i], "alpha", 0F, 1F).setDuration(ANIMATION_ALPHA)
                 )
                 interpolator = BounceInterpolator()//添加回弹动画
-                duration = ANIMATION_TRANSLATION
                 start()
-                addListener(object : Animator.AnimatorListener {
-                    override fun onAnimationRepeat(animation: Animator?) {
-                    }
-
+                addListener(object : AnimatorListenerAdapter() {
                     override fun onAnimationEnd(animation: Animator?) {
                         //菜单状态置开启
                         isMenuOpen = true
                         main_fab.isEnabled = true
-                    }
-
-                    override fun onAnimationCancel(animation: Animator?) {
                     }
 
                     override fun onAnimationStart(animation: Animator?) {
@@ -90,9 +85,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         //转动图标本身45°
-        val rotate: ObjectAnimator =
-            ObjectAnimator.ofFloat(main_fab, "rotation", 0F, 90F)
-                .setDuration(ANIMATION_ROTATION)
+        val rotate: ObjectAnimator = ObjectAnimator.ofFloat(main_fab, "rotation", 0F, 90F).setDuration(ANIMATION_ROTATION)
         rotate.interpolator = BounceInterpolator()//添加回弹动画
         rotate.start()
     }
@@ -106,28 +99,18 @@ class MainActivity : AppCompatActivity() {
             val set = AnimatorSet()
             with(set){
                 playTogether(
-                    ObjectAnimator.ofFloat(menuViews[i], "translationX", childMenuPoints[i].x, 0F),
-                    ObjectAnimator.ofFloat(menuViews[i], "translationY", childMenuPoints[i].y, 0F),
+                    ObjectAnimator.ofFloat(menuViews[i], "translationX", childMenuPoints[i].x, 0F).setDuration(ANIMATION_TRANSLATION),
+                    ObjectAnimator.ofFloat(menuViews[i], "translationY", childMenuPoints[i].y, 0F).setDuration(ANIMATION_TRANSLATION),
                     ObjectAnimator.ofFloat(menuViews[i], "alpha", 1f, 0f).setDuration(ANIMATION_ALPHA)
                 )
                 interpolator = BounceInterpolator() //添加回弹动画
-                duration = ANIMATION_TRANSLATION
                 start()
-                addListener(object : Animator.AnimatorListener {
-                    override fun onAnimationRepeat(animation: Animator?) {
-                    }
-
+                addListener(object : AnimatorListenerAdapter() {
                     override fun onAnimationEnd(animation: Animator?) {
                         menuViews[i].hide()
                         //菜单状态置关闭
                         isMenuOpen = false
                         main_fab.isEnabled = true
-                    }
-
-                    override fun onAnimationCancel(animation: Animator?) {
-                    }
-
-                    override fun onAnimationStart(animation: Animator?) {
                     }
                 })
             }
